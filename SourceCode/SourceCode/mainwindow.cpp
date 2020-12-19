@@ -12,10 +12,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-void MainWindow::on_bt_clicked()
-{
-    ui->GraphicsPresenter->mode=1;
-    ui->GraphicsPresenter->repaint();
-    ui->GraphicsPresenter->mode=0;
-}

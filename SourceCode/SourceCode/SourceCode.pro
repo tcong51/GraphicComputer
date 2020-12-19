@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-12-17T10:35:34
+# Project created by QtCreator 2020-12-19T09:01:12
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = endgame
+TARGET = SourceCode
 TEMPLATE = app
 
 
