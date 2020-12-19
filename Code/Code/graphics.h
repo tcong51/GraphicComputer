@@ -15,7 +15,12 @@ public:
     void timerEvent(QTimerEvent *);
     void Moon(QPainter& painter);
     void Sun(QPainter& paineter);
+    void cloudBig(QPainter& painter,double x, double y,double sx,double sy);
+    void cloudSmall(QPainter& painter,double x, double y,double sx,double sy);
+    void Brid(QPainter& painter);
     QPoint quay(QPoint p,QPoint c,int deta);
+    QPoint tinhtien(QPoint p,int tx,int ty);
+    QPoint doixungy(QPoint p,int y);
     int mode=0;
     double position;
     double positionBoat;
@@ -23,6 +28,8 @@ public:
     double positionYMoon;
     double positionXSun;
     double positionYSun;
+    double positionXBrid;
+    double positionYBrid;
     double timerId;
 signals:
 

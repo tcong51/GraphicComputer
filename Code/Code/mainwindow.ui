@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>992</width>
-    <height>501</height>
+    <width>832</width>
+    <height>452</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="graphics" name="GraphicsPresenter" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>0</y>
-      <width>731</width>
-      <height>421</height>
+      <width>801</width>
+      <height>401</height>
      </rect>
     </property>
    </widget>
@@ -30,7 +30,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>992</width>
+     <width>832</width>
      <height>21</height>
     </rect>
    </property>
