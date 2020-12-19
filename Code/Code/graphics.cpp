@@ -36,7 +36,7 @@ void graphics::paintEvent(QPaintEvent *){
 //     painter.setPen(Qt::white);
 
     cloudBig(painter,300,130,70,50);
-    cloudSmall(painter,550,165,20*1.4,20);
+    cloudSmall(painter,650,200,20*1.4,20);
     Mountain(painter);
     cloudBig(painter,50,50,70,50);
     Sea(painter);
@@ -61,10 +61,16 @@ QPoint graphics::tinhtien(QPoint p,int tx,int ty){
     pnew.setY(p.y()+ty);
     return pnew;
 }
-QPoint graphics::doixungy(QPoint p,int y){
+QPoint graphics::doixungy(QPoint p){
     QPoint pnew;
     pnew.setX(-p.x());
-    pnew.setY(y);
+    pnew.setY(p.y());
+    return pnew;
+}
+QPoint graphics::doixungx(QPoint p){
+    QPoint pnew;
+    pnew.setX(p.x());
+    pnew.setY(-p.y());
     return pnew;
 }
 
@@ -116,40 +122,41 @@ void graphics::cloudBig(QPainter &painter,double x, double y,double sx,double sy
     painter.setBrush(QBrush("white"));
     painter.setPen(Qt::white);
     //vị trí mặc định là 100,100
-    QPoint pointCould(x,y);
+    QPoint pointCloud(x,y);
     //sx =70,sy=50
-    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),(180*16));//nữa hình tròn
-    //
-    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),-(180*16));//nữa hình tròn
-    //
+    //vẽ bằng ellipse
+    painter.drawEllipse(pointCloud.x(),pointCloud.y(),sx,sy);
     //sx1=100.,sy1=50
-    painter.drawChord(pointCould.x()+35,pointCould.y()-25,100,sy,0,(180*16));
-     painter.drawChord(pointCould.x()+35,pointCould.y()-25,100,sy,0,-(180*16));
-     //
-    painter.drawChord(pointCould.x()+100,pointCould.y(),sx,sy,(90*16),-(180*16));
-    painter.drawChord(pointCould.x()+100,pointCould.y(),sx,sy,(90*16),+(180*16));
-    //
-    painter.drawChord(pointCould.x()+35,pointCould.y()+25,100,sy,0,-(180*16));
-    painter.drawChord(pointCould.x()+35,pointCould.y()+25,100,sy,0,+(180*16));
-    //
-
+    painter.drawEllipse(pointCloud.x()+35,pointCloud.y()-25,100,sy);
+    painter.drawEllipse(pointCloud.x()+100,pointCloud.y(),sx,sy);
+    painter.drawEllipse(pointCloud.x()+35,pointCloud.y()+25,100,sy);
+    //vẽ bằng drawChord nữa cung tròn
+     //    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),(180*16));//nữa hình tròn
+     //    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),-(180*16));//nữa hình tròn
+     //    painter.drawChord(pointCloud.x()+35,pointCloud.y()-25,100,sy,0,(180*16));
+     //     painter.drawChord(pointCloud.x()+35,pointCloud.y()-25,100,sy,0,-(180*16));
+     //    painter.drawChord(pointCloud.x()+100,pointCloud.y(),sx,sy,(90*16),-(180*16));
+     //    painter.drawChord(pointCloud.x()+100,pointCloud.y(),sx,sy,(90*16),+(180*16));
+     //    painter.drawChord(pointCloud.x()+35,pointCloud.y()+25,100,sy,0,-(180*16));
+     //    painter.drawChord(pointCloud.x()+35,pointCloud.y()+25,100,sy,0,+(180*16));
 }
 void graphics::cloudSmall(QPainter &painter,double x, double y,double sx,double sy){
 
     //vị trí mặc định là 100,100
-    QPoint pointCould(x,y);
+    QPoint pointCloud(x,y);
     //sx =70,sy=50
-    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),(180*16));//nữa hình tròn
-    painter.drawChord(pointCould.x(),pointCould.y(),sx,sy,(90*16),-(180*16));
-    //sx1=100.,sy1=50
-    painter.drawChord(pointCould.x()+15,pointCould.y()-10,100,sy,0,(180*16));
-    painter.drawChord(pointCould.x()+15,pointCould.y()-10,100,sy,0,-(180*16));
-    //
-    painter.drawChord(pointCould.x()+100,pointCould.y(),sx,sy,(90*16),-(180*16));
-    painter.drawChord(pointCould.x()+100,pointCould.y(),sx,sy,(90*16),(180*16));
-    //
-    painter.drawChord(pointCould.x()+15,pointCould.y()+10,100,sy,0,-(180*16));
-     painter.drawChord(pointCould.x()+15,pointCould.y()+10,100,sy,0,(180*16));
+    painter.drawEllipse(pointCloud.x(),pointCloud.y(),sx,sy);
+//    painter.drawChord(pointCloud.x(),pointCloud.y(),sx,sy,(90*16),(180*16));//nữa hình tròn
+//    painter.drawChord(pointCloud.x(),pointCloud.y(),sx,sy,(90*16),-(180*16));
+    painter.drawEllipse(pointCloud.x()+15,pointCloud.y()-10,80,sy);
+//    painter.drawChord(pointCloud.x()+15,pointCloud.y()-10,100,sy,0,(180*16));
+//    painter.drawChord(pointCloud.x()+15,pointCloud.y()-10,100,sy,0,-(180*16));
+    painter.drawEllipse(pointCloud.x()+80,pointCloud.y(),sx,sy);
+//    painter.drawChord(pointCloud.x()+100,pointCloud.y(),sx,sy,(90*16),-(180*16));
+//    painter.drawChord(pointCloud.x()+100,pointCloud.y(),sx,sy,(90*16),(180*16));
+    painter.drawEllipse(pointCloud.x()+15,pointCloud.y()+10,80,sy);
+//    painter.drawChord(pointCloud.x()+15,pointCloud.y()+10,100,sy,0,-(180*16));
+//     painter.drawChord(pointCloud.x()+15,pointCloud.y()+10,100,sy,0,(180*16));
 
 }
 void graphics::Sun(QPainter& painter){
@@ -166,7 +173,4 @@ void graphics::Brid(QPainter& painter){
     QPoint P(positionXBrid,positionYBrid);
     QString filename = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
     painter.drawPixmap(P.x(),P.y(),20*(258/183),20,QPixmap(filename));
-    QPoint Q=doixungy(P,P.x());
-    QString filename1 = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
-    painter.drawPixmap(Q.x(),Q.y(),20*(258/183),20,QPixmap(filename1));
 }

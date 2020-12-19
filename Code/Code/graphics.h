@@ -20,7 +20,9 @@ public:
     void Brid(QPainter& painter);
     QPoint quay(QPoint p,QPoint c,int deta);
     QPoint tinhtien(QPoint p,int tx,int ty);
-    QPoint doixungy(QPoint p,int y);
+    QPoint doixungy(QPoint p);
+    QPoint doixungx(QPoint p);
+
     int mode=0;
     double position;
     double positionBoat;
