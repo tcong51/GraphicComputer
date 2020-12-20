@@ -22,7 +22,10 @@ public:
     QPoint tinhtien(QPoint p,int tx,int ty);
     QPoint doixungy(QPoint p);
     QPoint doixungx(QPoint p);
-
+    //
+    void ngansao(QPainter& painter);
+    int random(int n);
+    //
     int mode=0;
     double position;
     double positionBoat;
