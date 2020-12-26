@@ -53,7 +53,7 @@ QPoint graphics::dichuyen(QPoint p, int kc, int huong){
     pnew.setY(p.y()+kc*sin(goc));
     return pnew;
 }
-
+//
 void graphics::thaiCuc(QPainter &painter, QPoint p, int x, int y){
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(Qt::black));
@@ -74,7 +74,7 @@ void graphics::thaiCuc(QPainter &painter, QPoint p, int x, int y){
     painter.setBrush(QBrush(Qt::white));
     painter.drawEllipse(b, x/20, x/20);
 }
-
+//
 void graphics::moon(QPainter &painter, QPoint p, int size){
 //    painter.setPen(QPen('#ffffff'));
     painter.setPen(Qt::DashDotDotLine);
@@ -84,7 +84,7 @@ void graphics::moon(QPainter &painter, QPoint p, int size){
     painter.setBrush(Qt::yellow);
     painter.drawEllipse(p, size-20, size-20);
 }
-
+//
 void graphics::boat(QPainter &painter, QPoint p, int size){
     QPolygon points;
     points.push_back(p);
@@ -123,7 +123,7 @@ void graphics::boat(QPainter &painter, QPoint p, int size){
     QPoint hinhCo(dinhCotBuom.x()+size/25+size/27, dinhCotBuom.y()+size/27);
     thaiCuc(painter, hinhCo, size/17, size/17);
 }
-
+//
 void graphics::cloud(QPainter &painter, QPoint p, int size){
     painter.setBrush(Qt::white);
     painter.setPen(Qt::NoPen);
@@ -136,7 +136,7 @@ void graphics::cloud(QPainter &painter, QPoint p, int size){
     painter.drawEllipse(p.x()+1.8*size, p.y()+size/3, size, size);
     painter.drawEllipse(p.x()-size/3, p.y()+size/3, size, size);
 }
-
+//
 void graphics::star(QPainter &painter, QPoint p, int size){
     painter.setPen(Qt::NoPen);
     painter.setBrush(QColor(random(255), random(255), random(255)));

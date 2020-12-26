@@ -9,33 +9,35 @@ class graphics : public QWidget
 public:
     explicit graphics(QWidget *parent = 0);
     void paintEvent(QPaintEvent *);
-    void Mountain(QPainter& painter);
-    void Boat(QPainter& painter);
-    void Sea(QPainter& painter);
     void timerEvent(QTimerEvent *);
-    void Moon(QPainter& painter);
-    void Sun(QPainter& paineter);
-    void cloudBig(QPainter& painter,double x, double y,double sx,double sy);
-    void cloudSmall(QPainter& painter,double x, double y,double sx,double sy);
+    void Mountain(QPainter& painter);
+    void Sea(QPainter& painter);
+    void Moon(QPainter& painter,QPoint p);
     void Brid(QPainter& painter);
+    //------//Hàm cơ sở
     QPoint quay(QPoint p,QPoint c,int deta);
     QPoint tinhtien(QPoint p,int tx,int ty);
-    QPoint doixungy(QPoint p);
-    QPoint doixungx(QPoint p);
-    //
-    void ngansao(QPainter& painter);
+    QPoint trungdiem(QPoint a, QPoint b);
     int random(int n);
-    //
-    int mode=0;
-    double position;
-    double positionBoat;
-    double positionXMoon;
-    double positionYMoon;
-    double positionXSun;
-    double positionYSun;
+    int randomNM(int n,int m);
+    //------//
+    QPointF BD;
+    void backGround(QPainter & painter);
+    int boatPosition;
+    int cloudFlyPosition1;
+    int cloudFlyPosition2;
+    int luminosity;
+    int sunAngle;
     double positionXBrid;
     double positionYBrid;
     double timerId;
+    int moonAngle;
+    //update
+   void thaiCuc(QPainter &painter, QPoint p, int x, int y);
+   void sun(QPainter &painter, QPoint p, int size);
+   void boat(QPainter &painter, QPoint p, int size);
+   void cloud(QPainter &painter, QPoint p, int size);
+   void star(QPainter &painter, QPoint p, int size);
 signals:
 
 public slots:
