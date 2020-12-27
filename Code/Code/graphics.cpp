@@ -41,7 +41,7 @@ void graphics::paintEvent(QPaintEvent *){
     for(int i=1;i<=1000;i++){
         int w =370;
         QPoint p(i+1,random(w));
-        star(painter,p,2);
+        star(painter,p,randomNM(1,2));
         i+=10;
     }
     painter.setBrush(QBrush("#8787ff"));
@@ -71,6 +71,7 @@ void graphics::paintEvent(QPaintEvent *){
     QPoint birdP(100,200);
     birdP.setX(birdP.x()+ speedOfBird);
     bird(painter,birdP);
+
 }
 
 QPoint graphics::quay(QPoint p,QPoint c,int deta){
@@ -199,25 +200,24 @@ void graphics::boat(QPainter &painter, QPoint p, int size){
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/70, dinhCotBuom.y()+size/23));
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/70, dinhCotBuom.y()+size*2/5));
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/5, dinhCotBuom.y()+size*2/5));
-    painter.setBrush(QBrush("#24b4ec"));
+    painter.setBrush(QBrush("#00875f"));
     painter.drawPolygon(canhBuom1);
 
     QPolygon canhBuom2;
-    canhBuom2.push_back(QPoint(dinhCotBuom.x()+size/23, dinhCotBuom.y()+50));
+    canhBuom2.push_back(QPoint(dinhCotBuom.x()+size/23, dinhCotBuom.y()+15));
     canhBuom2.push_back(QPoint(dinhCotBuom.x()+size/23, dinhCotBuom.y()+size*0.5));
     canhBuom2.push_back(QPoint(dinhCotBuom.x()+size/4, dinhCotBuom.y()+size*0.5));
     painter.drawPolygon(canhBuom2);
 
     //Co
-    painter.setBrush(QBrush(Qt::gray));
+    painter.setBrush(QBrush(Qt::red));
     painter.drawRect(dinhCotBuom.x()+size/25, dinhCotBuom.y(), size/7, size/9);
     QPoint hinhCo(dinhCotBuom.x()+size/25+size/27, dinhCotBuom.y()+size/27);
     thaiCuc(painter, hinhCo, size/17, size/17);
-    //Di chuyen
+
 
 }
 void graphics::sun(QPainter &painter, QPoint p, int size){
-//    painter.setPen(QPen('#ffffff'));
     if(p.y()>height()){
         painter.setPen(Qt::NoPen);
         painter.setBrush(Qt::NoBrush);
@@ -226,7 +226,6 @@ void graphics::sun(QPainter &painter, QPoint p, int size){
         QPoint moonPoint(width()/2-200,0);
         moonPoint=quay(moonPoint,C,moonAngle);
         moon(painter,moonPoint);
-
     }
     else{
         painter.drawEllipse(p, size+ luminosity, size+luminosity);
@@ -256,3 +255,5 @@ void graphics::thaiCuc(QPainter &painter, QPoint p, int x, int y){
     painter.setBrush(QBrush(Qt::white));
     painter.drawEllipse(b, x/20, x/20);
 }
+
+
