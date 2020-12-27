@@ -14,35 +14,29 @@ graphics::graphics(QWidget *parent) :
     luminosity=0;
     sunAngle =0;
     moonAngle =180;
-    positionXBrid=100;
-    positionYBrid=100;
-    boatPosition=0;
+    speedOfBoat=0;
+    speedOfBird=0;
 
 }
 void graphics::timerEvent(QTimerEvent *){
-//moveBoat
-    boatPosition+=5;
-    cloudFlyPosition1 +=10;
-    cloudFlyPosition2 +=8;
+    speedOfBoat+=5;
+    speedOfBird +=10;
+    speedOfCloud1 +=10;
+    speedOfCloud2 +=8;
+    sunAngle +=4;
+    moonAngle-=4;
     if(luminosity==30*45){
         luminosity = 0;
     }
     else{
         luminosity +=30;
     }
-    sunAngle +=4;
-    moonAngle-=4;
-  //moveBrid
-    positionXBrid+=20;
-    if(positionXBrid ==200)positionXBrid+=50,positionYBrid+=50;
-    if(positionXBrid ==300)positionXBrid+=25,positionYBrid+=25;
-    if(positionXBrid ==350)positionXBrid-=25,positionYBrid+=-25;
-    if(positionXBrid ==325)positionXBrid+=40,positionYBrid+=0;
     repaint();
 }
 
 void graphics::paintEvent(QPaintEvent *){
     QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
     backGround(painter);
     for(int i=1;i<=1000;i++){
         int w =370;
@@ -55,27 +49,28 @@ void graphics::paintEvent(QPaintEvent *){
     QPoint O(width()/2,height());
     sunP = quay(sunP,O,sunAngle);
     sun(painter,sunP,50);
-    Sea(painter);
+    sea(painter);
     QPoint cloud1(300,130);
-    cloud1.setX(cloud1.x()+ cloudFlyPosition1);
+    cloud1.setX(cloud1.x()+ speedOfCloud1);
     QPoint cloud2(650,200);
     QPoint cloud3(450,50);
     QPoint cloud4(280,130);
     QPoint cloud5(50,50);
     QPoint cloud6(60,70);
-    cloud6.setX(cloud6.x()+ cloudFlyPosition2);
+    cloud6.setX(cloud6.x()+ speedOfCloud2);
     cloud(painter,cloud1,40);
     cloud(painter,cloud2,40);
     cloud(painter,cloud3,60);
     cloud(painter,cloud4,35);
     cloud(painter,cloud5,40);
     cloud(painter,cloud6,50);
-    Mountain(painter);
-    painter.setRenderHint(QPainter::Antialiasing);
+    mountain(painter);
     QPoint boatP(0,370);
-    boatP.setX(boatP.x()+ boatPosition);
+    boatP.setX(boatP.x()+ speedOfBoat);
     boat(painter,boatP,150);
-    Brid(painter);
+    QPoint birdP(100,200);
+    birdP.setX(birdP.x()+ speedOfBird);
+    bird(painter,birdP);
 }
 
 QPoint graphics::quay(QPoint p,QPoint c,int deta){
@@ -91,42 +86,35 @@ QPoint graphics::trungdiem(QPoint a, QPoint b){
     return pnew;
 }
 
-void graphics::Mountain(QPainter &painter){
-    int r= 100;
+void graphics::mountain(QPainter &painter){
     int h= height();
     int w= width();
-    painter.setBrush(QBrush("#b40000"));
     QString filename= "C:/xampp/htdocs/GitHub/DHMT/mountain.png";
     painter.drawPixmap(10,175,w-20,h/2,QPixmap(filename));
 }
 
-void graphics::Moon(QPainter &painter , QPoint p){
-    painter.setPen(Qt::yellow);
-    painter.setBrush(QBrush("#b40000"));
+void graphics::moon(QPainter &painter , QPoint p){
     QString filename = "C:/xampp/htdocs/GitHub/DHMT/moon.png";
     painter.drawPixmap(p.x(),p.y(),30*1.85,40,QPixmap(filename));
 
 }
-void graphics::Sea(QPainter &painter){
-    int r= 100;
+void graphics::sea(QPainter &painter){
     int h= height();
     int w= width();
     painter.setBrush(QBrush("#8787ff"));
     painter.drawRect(0,h-30,w,100);
 }
-void graphics::Brid(QPainter& painter){
-    QPoint P(positionXBrid,positionYBrid);
-    //bridFirst
-    QString bridFirst = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
-    painter.drawPixmap(P.x(),P.y(),20*(258/183),20,QPixmap(bridFirst));
-    QString bridFirstContinue = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
-    painter.drawPixmap(P.x()+18*(258/183),P.y(),20*(258/183),20,QPixmap(bridFirstContinue));
-    //bridSecond
-    QPoint PSecond(positionXBrid+25,positionYBrid+25);
-    QString bridSecond =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
-    painter.drawPixmap(PSecond.x(),PSecond.y(),20*(258/153),20,QPixmap(bridSecond));
-    QString bridSecondContinue =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
-    painter.drawPixmap(PSecond.x()+18*(253/183),PSecond.y(),20*(258/153),20,QPixmap(bridSecondContinue));
+void graphics::bird(QPainter& painter,QPoint p){
+    QString wingLeftOfFirstBird = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    painter.drawPixmap(p.x(),p.y(),20*(258/183),20,QPixmap(wingLeftOfFirstBird));
+    QString wingRightOfFirstBird = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    painter.drawPixmap(p.x()+18*(258/183),p.y(),20*(258/183),20,QPixmap(wingRightOfFirstBird));
+
+    QPoint PSecond(p.x()+25,p.y()+25);
+    QString wingLeftOfSecondBird =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    painter.drawPixmap(PSecond.x(),PSecond.y(),20*(258/153),20,QPixmap(wingLeftOfSecondBird));
+    QString wingRightOfSecondBird =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    painter.drawPixmap(PSecond.x()+18*(253/183),PSecond.y(),20*(258/153),20,QPixmap(wingRightOfSecondBird));
 
 }
 void graphics::backGround(QPainter & painter){
@@ -197,13 +185,13 @@ void graphics::boat(QPainter &painter, QPoint p, int size){
     points.push_back(a);
     points.push_back(b);
     points.push_back(c);
-    painter.setBrush(QBrush('#715842'));
+    painter.setBrush(QBrush("#715842"));
     painter.drawPolygon(points);
 
     //Cot buom
     QPoint dinhCotBuom=trungdiem(p,a);
     dinhCotBuom.setY(dinhCotBuom.y()-size*3/5);
-    painter.setBrush(QBrush('#353847'));
+    painter.setBrush(QBrush("#353847"));
     painter.drawRect(dinhCotBuom.x(), dinhCotBuom.y(), size/30, size/1.75);
 
     //Canh buom
@@ -211,7 +199,7 @@ void graphics::boat(QPainter &painter, QPoint p, int size){
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/70, dinhCotBuom.y()+size/23));
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/70, dinhCotBuom.y()+size*2/5));
     canhBuom1.push_back(QPoint(dinhCotBuom.x()-size/5, dinhCotBuom.y()+size*2/5));
-    painter.setBrush(QBrush('##24b4ec'));
+    painter.setBrush(QBrush("#24b4ec"));
     painter.drawPolygon(canhBuom1);
 
     QPolygon canhBuom2;
@@ -235,9 +223,9 @@ void graphics::sun(QPainter &painter, QPoint p, int size){
         painter.setBrush(Qt::NoBrush);
         luminosity=0;
         QPoint C(width()/2,0);
-        QPoint moon(width()/2-200,0);
-        moon=quay(moon,C,moonAngle);
-        Moon(painter,moon);
+        QPoint moonPoint(width()/2-200,0);
+        moonPoint=quay(moonPoint,C,moonAngle);
+        moon(painter,moonPoint);
 
     }
     else{
