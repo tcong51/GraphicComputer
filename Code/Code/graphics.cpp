@@ -90,12 +90,12 @@ QPoint graphics::trungdiem(QPoint a, QPoint b){
 void graphics::mountain(QPainter &painter){
     int h= height();
     int w= width();
-    QString filename= "C:/xampp/htdocs/GitHub/DHMT/mountain.png";
+    QString filename= "../Img/mountain.png";
     painter.drawPixmap(10,175,w-20,h/2,QPixmap(filename));
 }
 
 void graphics::moon(QPainter &painter , QPoint p){
-    QString filename = "C:/xampp/htdocs/GitHub/DHMT/moon.png";
+    QString filename = "../Img/moon.png";
     painter.drawPixmap(p.x(),p.y(),30*1.85,40,QPixmap(filename));
 
 }
@@ -106,15 +106,15 @@ void graphics::sea(QPainter &painter){
     painter.drawRect(0,h-30,w,100);
 }
 void graphics::bird(QPainter& painter,QPoint p){
-    QString wingLeftOfFirstBird = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    QString wingLeftOfFirstBird = "../Img/wing.png";
     painter.drawPixmap(p.x(),p.y(),20*(258/183),20,QPixmap(wingLeftOfFirstBird));
-    QString wingRightOfFirstBird = "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    QString wingRightOfFirstBird = "../Img/wing.png";
     painter.drawPixmap(p.x()+18*(258/183),p.y(),20*(258/183),20,QPixmap(wingRightOfFirstBird));
 
     QPoint PSecond(p.x()+25,p.y()+25);
-    QString wingLeftOfSecondBird =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    QString wingLeftOfSecondBird =  "../Img/wing.png";
     painter.drawPixmap(PSecond.x(),PSecond.y(),20*(258/153),20,QPixmap(wingLeftOfSecondBird));
-    QString wingRightOfSecondBird =  "C:/xampp/htdocs/GitHub/DHMT/wing.png";
+    QString wingRightOfSecondBird =  "../Img/wing.png";
     painter.drawPixmap(PSecond.x()+18*(253/183),PSecond.y(),20*(258/153),20,QPixmap(wingRightOfSecondBird));
 
 }

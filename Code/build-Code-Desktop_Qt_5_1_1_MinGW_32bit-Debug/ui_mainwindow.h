@@ -36,16 +36,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(822, 459);
+        MainWindow->resize(821, 460);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         GraphicsPresenter = new graphics(centralWidget);
         GraphicsPresenter->setObjectName(QStringLiteral("GraphicsPresenter"));
-        GraphicsPresenter->setGeometry(QRect(0, 0, 801, 401));
+        GraphicsPresenter->setGeometry(QRect(0, 0, 781, 401));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 822, 21));
+        menuBar->setGeometry(QRect(0, 0, 821, 21));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
